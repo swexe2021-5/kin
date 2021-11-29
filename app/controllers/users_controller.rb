@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     
     def login
         if params[:age] == "kindai" and params[:gender] == "sanriko"
-            session[:login_uid] = params[:age]
-            redirect_to tops_path
+            session[:login_uid] = params[:gender]
+            redirect_to tops_index2_path
         else
             render 'login_failed'
         end
