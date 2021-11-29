@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     def main
         if session[:login_uid]
-            render 'tops/index'
+            render 'main'
         else
             render 'login'
         end
