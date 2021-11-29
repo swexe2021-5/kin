@@ -1,16 +1,16 @@
 class UsersController < ApplicationController
     def main
         if session[:login_uid]
-            render 'index'
+            render 'main'
         else
             render 'login'
         end
     end
     
     def login
-        if params[:uid] == "kindai" and params[:pass] == "sanriko"
-            session[:login_uid] = params[:uid]
-            redirect_to root_path
+        if params[:age] == "kindai" and params[:gender] == "sanriko"
+            session[:login_uid] = params[:gender]
+            redirect_to tops_index2_path
         else
             render 'login_failed'
         end
