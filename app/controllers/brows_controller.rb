@@ -1,2 +1,0 @@
-class BrowsController < ApplicationController
-end

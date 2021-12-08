@@ -1,4 +1,6 @@
 class Like < ApplicationRecord
-    belong_to :user
-    belong_to :brow
+  belongs_to :user
+  belongs_to :post
+  
+  validates_uniqueness_of :post_id, scope: :user_id
 end

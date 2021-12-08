@@ -1,4 +1,4 @@
 class User < ApplicationRecord
-    has_many :likes
-    has_many :brows, through: :likes
+    device :database_aythenticatable, :registerable,:recoverable, :rememberable, :trackable, :validatable
+    has_many :posts, dependent: :destroy
 end

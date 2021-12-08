@@ -1,0 +1,9 @@
+<h1>投稿一覧</h1>
+<p>タイトル</p>
+<% @posts.each do |post| %>
+  <%= post.title %>
+  <%= post.body %>
+  <%= link_to "show", "../posts/#{post.id}" %><br>
+<% end %>
+<br>
+<%=link_to 'new', 'new' %>
