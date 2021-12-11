@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
     def main
-        if session[:login_uid]
-            render 'main'
+        if user_signed_in?
+            render 'index2'
         else
-            render 'login'
+            render 'sign_up'
         end
     end
     
