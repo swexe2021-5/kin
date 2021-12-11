@@ -1,0 +1,13 @@
+
+body
+    .app-title.navbar.navbar-expand-md.navbar-light.bg-light
+      .navbar-brand Taskleaf
+
+      ul.navbar-nav.ml-auto
+         #先ほどヘルパーメソッドに定義したcurrent_userメソッドを利用して、ログインしている時とログアウトしている時で画面の表示を変える
+       - if current_user
+         li.nav-item= link_to 'タスク一覧',tasks_path'
+         li.nav-item= link_to 'ユーザー一覧',admin_users_path'
+         li.nav-item= link_to 'ログアウト',logout_path,method: :delete'
+       - else
+         li.nav-item= link_to 'ログイン',login_path'
