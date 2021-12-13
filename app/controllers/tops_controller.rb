@@ -3,6 +3,4 @@ class TopsController < ApplicationController
     end
     def index2
     end
-    
-    before_action :authenticate_user!
 end

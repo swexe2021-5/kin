@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_09_054458) do
+ActiveRecord::Schema.define(version: 2021_12_12_124129) do
+
+  create_table "corporate_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "corporates", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+    t.string "remember_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
@@ -28,14 +41,18 @@ ActiveRecord::Schema.define(version: 2021_12_09_054458) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.integer "age", null: false
-    t.string "gender", null: false
-    t.string "email", null: false
-    t.string "password_digest", null: false
+  create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.integer "age"
+    t.string "gender"
+    t.string "email", null: false
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

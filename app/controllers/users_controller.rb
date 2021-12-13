@@ -20,4 +20,22 @@ class UsersController < ApplicationController
         session.delete(:login_uid)
         redirect_to root_path
     end
+    def new
+        @user=User.new
+    end
+    def create
+        @user=User.new(user_params)
+        if @user.save
+            redirect_to login_path
+        else
+            render 'tops/index'
+        end
+    end
+    def show
+        @user=User.find_by(id: params[:id])
+    end
+    private
+    def user_params
+        params.require(:user).permit(:age, :gender, :email, :password, :password_confirmation)
+    end
 end
