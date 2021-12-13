@@ -10,7 +10,7 @@ class CorporateUsersController < ApplicationController
         end
     end
     def show
-        @corporate=params[:corporate][:name]
+        
     end
     def destroy
         sign_out
