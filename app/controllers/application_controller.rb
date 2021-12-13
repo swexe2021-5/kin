@@ -1,24 +1,25 @@
 class ApplicationController < ActionController::Base
-    before_action :configure_permitted_parameters, if: :devise_controller?
-    helper_method :current_user
-    before_action :login_required
-
-    protected
-    def configure_permitted_parameters
-      # サインアップ時にnameのストロングパラメータを追加
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-      # アカウント編集の時にnameとprofileのストロングパラメータを追加
-      devise_parameter_sanitizer.permit(:account_update, keys: [:name, :profile])
-    end
-    
-    private
-    
-    def current_user
-      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-    end
-    
-    def login_required
-      redirect_to login_path unless current_user
-    end
-      
+  def sign_in(user)
+    remember_token=User.new_remember_token
+    cookies.peranent[:user_remember_token]=remember_token
+    user.update!(remember_token: User.encrypt(remember_token))
+    @current_user=user
+  end
+  def sign_out
+    cookies.delete(:user_remember_token)
+  end
+  protect_from_forgery with: :exception
+  include SessionsHelper
+  
+  def sign_in(corporate)
+    remember_token=Corporate.new_remember_token
+    cookies.permanent[:corporate_remember_token]=remember_token
+    corporate.update!(remember_token: Corporate.encrypt(remember_token))
+    @current_user=corporate
+  end
+  def sign_out
+    cookies.delete(:corporate_remember_token)
+  end
+  protect_from_forgery with: :exception
+  include SessionsHelper
 end
