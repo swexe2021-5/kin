@@ -10,14 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_11_22_073407) do
-
-  create_table "searches", force: :cascade do |t|
-=======
 ActiveRecord::Schema.define(version: 2021_12_12_124129) do
 
   create_table "corporate_users", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,8 +42,12 @@ ActiveRecord::Schema.define(version: 2021_12_12_124129) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "searches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
->>>>>>> 9f7bef5dc05155bcd5b79ad5f45f19622c541131
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
