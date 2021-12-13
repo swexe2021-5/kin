@@ -1,16 +1,16 @@
 class UsersController < ApplicationController
     def main
-        if session[:login_uid]
-            render 'index'
+        if user_signed_in?
+            render 'index2'
         else
-            render 'login'
+            render 'sign_up'
         end
     end
     
     def login
-        if params[:uid] == "kindai" and params[:pass] == "sanriko"
-            session[:login_uid] = params[:uid]
-            redirect_to root_path
+        if params[:age] == "kindai" and params[:gender] == "sanriko"
+            session[:login_uid] = params[:gender]
+            redirect_to tops_index2_path
         else
             render 'login_failed'
         end
@@ -19,5 +19,23 @@ class UsersController < ApplicationController
     def logout
         session.delete(:login_uid)
         redirect_to root_path
+    end
+    def new
+        @user=User.new
+    end
+    def create
+        @user=User.new(user_params)
+        if @user.save
+            redirect_to login_path
+        else
+            render 'tops/index'
+        end
+    end
+    def show
+        @user=User.find_by(id: params[:id])
+    end
+    private
+    def user_params
+        params.require(:user).permit(:age, :gender, :email, :password, :password_confirmation)
     end
 end

@@ -1,0 +1,15 @@
+<h1>投稿一覧</h1>
+<p>タイトル</p>
+<div class="posts-container">
+  <% @posts.each do |f| %>
+    <div class="post">
+      <%= f.title %>
+      <%= f.body %>
+      <%= f.created_at %>
+    </div>
+  <% end %>
+</div>
+<br>
+<%= link_to 'new', 'new' %>
+<%= link_to 'show', '../users/show' %>
+<%= link_to 'corporate_login', corporate_login_path %>

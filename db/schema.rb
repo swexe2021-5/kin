@@ -10,9 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_11_22_073407) do
 
   create_table "searches", force: :cascade do |t|
+=======
+ActiveRecord::Schema.define(version: 2021_12_12_124129) do
+
+  create_table "corporate_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "corporates", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+    t.string "remember_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sessions", force: :cascade do |t|
+>>>>>>> 9f7bef5dc05155bcd5b79ad5f45f19622c541131
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -20,7 +55,8 @@ ActiveRecord::Schema.define(version: 2021_11_22_073407) do
   create_table "users", force: :cascade do |t|
     t.integer "age"
     t.string "gender"
-    t.string "local"
+    t.string "email", null: false
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -3,9 +3,11 @@
 one:
   age: 1
   gender: MyString
-  local: MyString
+  email: MyString
+  password_digest: MyString
 
 two:
   age: 1
   gender: MyString
-  local: MyString
+  email: MyString
+  password_digest: MyString
