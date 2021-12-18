@@ -4,6 +4,24 @@
         <%= link_to "login", login_path %>
         <%= link_to "logout", logout_path, method: :delete %>
         <li><a>企業用ページ</a></li>
-        <li><b><%= link_to "ランキング",></b></li>
+        <li><b><%= link_to "ランキング"%></b></li>
     </ul>
 </nav>
+ <a><ul>
+        <%= image_tag "susi.jpg", size: '270x195' %>
+        <%= image_tag "piza.jpg", size: '270x195' %>
+        <%= image_tag "good.jpg", size: '270x195' %>
+
+ </ul></a>
+ <table width = 160%>
+     <tr>
+         <th>1位○○店寿司セット２００円引き</th>
+         <th>2位××店ピザ1枚１０００円</th>
+         <th>3位△遊園地入場料無料</th>
+     </tr>
+ </table>
+ <style>
+a ul {
+  display: flex;
+}
+</style>
