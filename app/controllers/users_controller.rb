@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     
     def logout
         session.delete(:login_uid)
-        redirect_to 'tops/index'
+        redirect_to roo_path
     end
     def new
         @user=User.new

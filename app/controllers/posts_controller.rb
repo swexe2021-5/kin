@@ -4,7 +4,7 @@ class PostsController < ApplicationController
         @post=Post.new
     end
     def index3
-        @posts=Post.all.order(start_on: :asc)
+        @posts=Post.all.order(end_on: :asc)
         @corporate=Corporate.find_by(params[:name])
         special_post_ids=Post.where.not(start_on: nil).pluck(:id)
         @special_posts=Post.where(id: special_post_ids).where('start_on <= ?', Date.today).where('end_on >= ?', Date.today)
@@ -41,6 +41,19 @@ class PostsController < ApplicationController
         #    return
         #end
         
+    end
+    
+    def edit
+        @post=Post.find(params[:id])
+    end
+    
+    def update
+        post=Post.find(params[:id])
+        if post.update(post_params)
+            redirect_to :action =>"index3"
+        else
+            redirect_to :action =>"new"
+        end
     end
 
     private

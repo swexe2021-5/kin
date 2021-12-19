@@ -5,13 +5,13 @@
 <h3>新規Post</h3>
 <%= form_for @post do |f| %>
   <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title, :size => 140 %>
-    <%= f.label :body %>
-    <%= f.text_field :body, :size => 140 %>
+    <%= f.label :title, '商品名' %>
+    <%= f.text_area :title, :size => 140 %><br>
+    <%= f.label :body, '価格' %>
+    <%= f.text_area :body, :size => 140 %><br>
     <%= date_field_tag 'post[start_on]' %>
     <%= date_field_tag 'post[end_on]' %>
   </div>
   <%= f.submit "Tweetする" %>
 <% end %>
-<%= link_to "一覧に戻る", posts_index3_path %>
+<%= link_to "一覧に戻る", "/" %>

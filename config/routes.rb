@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     get 'posts/new' => 'posts#new'
     get 'posts/index3' => 'posts#index3'
     get 'posts/:id' => 'posts#show'
+    patch 'posts/:id' => 'posts#update'
+    get 'posts/:id/edit' => 'posts#edit', as:'edit_post'
     post 'posts' => 'posts#create'
     resources :posts do
       resources :likes, only: [:create, :destroy]

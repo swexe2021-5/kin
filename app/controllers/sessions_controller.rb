@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     def create
       @user=User.find_by(email: session_params[:email])
         if @user && @user.authenticate(session_params[:password])#ユーザーが見つかった場合には、送られてきたパスワードによる認証をauthenticateメソッドを使って行います
-          redirect_to tops_index2_path
+          redirect_to '/posts/index3'
         else
           render 'tops/index'
         end
