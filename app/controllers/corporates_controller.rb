@@ -5,7 +5,7 @@ class CorporatesController < ApplicationController
     
     def create
         @corporate=Corporate.new(corporate_params)
-        if @corporate.save
+        if @corporate.save!
             redirect_to corporate_login_path
         else
             render 'new'
@@ -15,6 +15,7 @@ class CorporatesController < ApplicationController
         log_out
         redirect_to ports_index3_path
     end
+    
     private
     def corporate_params
         params.require(:corporate).permit(:name, :password, :password_confirmation)

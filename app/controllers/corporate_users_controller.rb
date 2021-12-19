@@ -2,25 +2,27 @@ class CorporateUsersController < ApplicationController
     def new
     end
     def create
-        @corporate=Corporate.find_by(name: corporate_params[:name])
-        if @corporate && @corporate.authenticate(corporate_params[:password])
-            redirect_to '/corporate_user/:id'
+        corporate=Corporate.find_by(name: corporate_user_params[:name])
+        if corporate && corporate.authenticate(corporate_user_params[:password])
+            redirect_to corporate_user_show_path
         else
             render 'new'
         end
     end
     def show
-        
+        @corporate=Corporate.find_by(params[:name])
     end
     def destroy
-        sign_out
+        corporateuser=Corporate.find_by(params[:name])
+        corporateuser.delete
         redirect_to corporate_login_path
     end
+    
     private
-    def corporate_params
-        params.require(:corporate_user).permit(:name, :password)
-    end
     def corporate_user_params
-        params.permit(:name, :password, :password_confirmation)
+        params.require(:corporate_user).permit(:name, :password, :password_confirmation)
+    end
+    def corporate_params
+        params.require(:corporate).permit(:name)
     end
 end
