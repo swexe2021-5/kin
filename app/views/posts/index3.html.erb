@@ -1,13 +1,16 @@
 <h1>投稿一覧</h1>
-<p>タイトル</p>
 <% @posts.each do |f| %>
-
-  <%= @corporate %>
-  <%= f.title %>
-  <%= f.body %>
-  <%= f.start_on %> ~ <%= f.end_on %><br>
-  
-  <%= render partial: 'special_posts', collection: @special_posts, as: :post %>
+  <% if f.end_on < Date.today %>
+  <% else %>
+    <div class="box2">
+      <p><%= @corporate %></p>
+      <p><%= f.title %></p>
+      <p><%= f.body %></p>
+      <p><%= f.start_on %><%= "~" %><%= f.end_on %></p>
+      
+      <p><%= render partial: 'special_posts', collection: @special_posts, as: :post %></p>
+    </div>
+  <% end %>
 <% end %>
 <br>
 
