@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
     
-    devise_for :users
+  get 'tweets/show'
+  devise_for :tweets
     root 'tops#index'
     
     get 'searches/new'
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
     get 'posts/:id' => 'posts#show'
     post 'posts' => 'posts#create'
     resources :posts do
-    resources :likes, only: [:create, :destroy]
+      resources :likes, only: [:create, :destroy]
     end
     
     resource :sessions, only: [:new, :create, :destroy]
@@ -33,7 +34,9 @@ Rails.application.routes.draw do
     resources :corporates, only: [:create]
     
     get 'corporate_login' => 'corporate_users#new'
-    get 'corporate_user/:id' => 'corporate_users#show'
     post 'corporate_login' => 'corporate_users#create'
     delete 'corporate_logout' => 'corporate_users#destroy'
+    get 'corporate_user_show' => 'corporate_users#show'
+
+    resources :tweets
 end

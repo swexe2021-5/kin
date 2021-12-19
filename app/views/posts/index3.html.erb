@@ -1,15 +1,18 @@
 <h1>投稿一覧</h1>
 <p>タイトル</p>
-<div class="posts-container">
-  <% @posts.each do |f| %>
-    <div class="post">
-      <%= f.title %>
-      <%= f.body %>
-      <%= f.created_at %>
-    </div>
-  <% end %>
-</div>
+<% @posts.each do |f| %>
+
+  <%= @corporate %>
+  <%= f.title %>
+  <%= f.body %>
+  <%= f.start_on %> ~ <%= f.end_on %><br>
+  
+  <%= render partial: 'special_posts', collection: @special_posts, as: :post %>
+<% end %>
 <br>
+
 <%= link_to 'new', 'new' %>
 <%= link_to 'show', '../users/show' %>
-<%= link_to 'corporate_login', corporate_login_path %>
+<!-- <%= link_to 'corporate_login', corporate_login_path %> -->
+<%= link_to "back", root_path %>
+<%= link_to "logout", corporate_logout_path, method: :delete %>

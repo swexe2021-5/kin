@@ -8,10 +8,8 @@ class ApplicationController < ActionController::Base
   def sign_out
     cookies.delete(:user_remember_token)
   end
-  protect_from_forgery with: :exception
-  include SessionsHelper
   
-  def sign_in(corporate)
+  def sign_in(usercorporate)
     remember_token=Corporate.new_remember_token
     cookies.permanent[:corporate_remember_token]=remember_token
     corporate.update!(remember_token: Corporate.encrypt(remember_token))
@@ -20,6 +18,7 @@ class ApplicationController < ActionController::Base
   def sign_out
     cookies.delete(:corporate_remember_token)
   end
+  
   protect_from_forgery with: :exception
   include SessionsHelper
 end
